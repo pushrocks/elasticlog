@@ -62,7 +62,7 @@ export class ElasticLog<T> {
   log(logObject: IStandardLogParams) {
     const now = new Date()
     this.client.index({
-      index: `logs-${now.getFullYear()}.${now.getMonth() + 1}.${now.getDate()}`,
+      index: `logs-${now.getFullYear()}.${("0" + (now.getMonth() + 1)).slice(-2)}.${now.getDate()}`,
       type: 'log',
       body: {
         '@timestamp': now.toISOString(),

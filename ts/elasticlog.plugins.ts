@@ -1,4 +1,6 @@
-const removeme = {};
+import * as elasticsearch from 'elasticsearch';
+import * as smartdelay from 'smartdelay';
 export {
-  removeme
+  elasticsearch,
+  smartdelay
 }
