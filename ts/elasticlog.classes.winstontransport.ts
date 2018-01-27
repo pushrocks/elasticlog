@@ -20,7 +20,7 @@ export class ElasticWinstonTransport extends Transport {
   log(info, callback) {
     this.client.log({
       severity: info.level,
-      message: info.message,
+      message: info.message
     });
     callback();
   }
