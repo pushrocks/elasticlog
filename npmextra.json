@@ -3,5 +3,8 @@
     "npmGlobalTools": [
       "npmts"
     ]
+  },
+  "npmts": {
+    "coverageTreshold": 50
   }
 }
