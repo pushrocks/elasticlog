@@ -1,11 +1,12 @@
-export declare type Environment = 'local' | 'test' | 'staging' | 'production';
-import { Client as ElasticClient } from 'elasticsearch';
+export declare type Environment = "local" | "test" | "staging" | "production";
+import { Client as ElasticClient } from "elasticsearch";
+import { LogScheduler } from "./elasticlog.classes.logscheduler";
 export interface LogContext {
     zone?: string;
     containerName?: string;
     environment: Environment;
 }
-export declare type TLogSeverity = 'log' | 'info' | 'warn' | 'error' | 'fatal';
+export declare type TLogSeverity = "log" | "info" | "warn" | "error" | "fatal";
 export interface IStandardLogParams {
     message: string;
     severity: string;
@@ -32,9 +33,5 @@ export declare class ElasticLog<T> {
      * @param optionsArg
      */
     private computeHostString(optionsArg);
-    log(logObject: IStandardLogParams): void;
-}
-export declare class LogScheduler {
-    logStorage: any[];
-    addFailedLog(objectArg: any | IStandardLogParams): void;
+    log(logObject: IStandardLogParams, scheduleOverwrite?: boolean): Promise<void>;
 }

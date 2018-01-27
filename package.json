@@ -19,7 +19,8 @@
     "@types/elasticsearch": "^5.0.19",
     "elasticsearch": "^14.0.0",
     "smartdelay": "^1.0.4",
-    "typings-global": "^1.0.16"
+    "typings-global": "^1.0.16",
+    "winston-transport": "^3.0.1"
   },
   "config": {
     "commitizen": {
