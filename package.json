@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Lossless GmbH",
-  "license": "",
+  "license": "MIT",
   "scripts": {
     "test": "(npmts)",
     "format": "(gitzone format)"
@@ -18,8 +18,7 @@
   "dependencies": {
     "@types/elasticsearch": "^5.0.19",
     "elasticsearch": "^14.0.0",
-    "smartdelay": "^1.0.4",
-    "winston-transport": "^3.0.1"
+    "smartdelay": "^1.0.4"
   },
   "config": {
     "commitizen": {

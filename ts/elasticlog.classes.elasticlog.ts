@@ -2,7 +2,6 @@ export type Environment = "local" | "test" | "staging" | "production";
 
 // interfaces
 import { Client as ElasticClient } from "elasticsearch";
-import { IWinstonStandardLogParams } from "./elasticlog.classes.winstontransport";
 
 // other classes
 import { LogScheduler } from "./elasticlog.classes.logscheduler";
