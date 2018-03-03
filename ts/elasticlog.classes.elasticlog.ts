@@ -1,18 +1,8 @@
-export type Environment = "local" | "test" | "staging" | "production";
-
 // interfaces
 import { Client as ElasticClient } from "elasticsearch";
 
 // other classes
 import { LogScheduler } from "./elasticlog.classes.logscheduler";
-
-export interface LogContext {
-  zone?: string;
-  containerName?: string;
-  environment: Environment;
-}
-
-export type TLogSeverity = "log" | "info" | "warn" | "error" | "fatal";
 
 export interface IStandardLogParams {
   message: string;
@@ -76,6 +66,7 @@ export class ElasticLog<T> {
         type: "log",
         body: {
           "@timestamp": now.toISOString(),
+          zone: this.logContext.zone,
           container: this.logContext.containerName,
           environment: this.logContext.environment,
           severity: logObject.severity,
