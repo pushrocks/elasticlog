@@ -23,7 +23,7 @@ tap.test('first test', async () => {
   expect(testElasticLog).to.be.instanceOf(elasticlog.ElasticLog);
 });
 
-tap.test('should send a message to Elasticsearch', async () => {
+tap.skip.test('should send a message to Elasticsearch', async () => {
   testElasticLog.log({
     severity: 'log',
     message: 'hi, this is a testMessage'
