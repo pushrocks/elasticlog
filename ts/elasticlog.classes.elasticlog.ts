@@ -1,8 +1,9 @@
 // interfaces
-import { Client as ElasticClient } from "elasticsearch";
+import { Client as ElasticClient } from 'elasticsearch';
+import { ILogContext } from '@pushrocks/smartlog-interfaces';
 
 // other classes
-import { LogScheduler } from "./elasticlog.classes.logscheduler";
+import { LogScheduler } from './elasticlog.classes.logscheduler';
 
 export interface IStandardLogParams {
   message: string;
@@ -15,12 +16,12 @@ export interface IElasticLogConstructorOptions {
   ssl: boolean;
   user?: string;
   pass?: string;
-  logContext: LogContext;
+  logContext: ILogContext;
 }
 
 export class ElasticLog<T> {
   client: ElasticClient;
-  logContext: LogContext;
+  logContext: ILogContext;
   logScheduler = new LogScheduler(this);
 
   /**
@@ -31,7 +32,7 @@ export class ElasticLog<T> {
     this.logContext = optionsArg.logContext;
     this.client = new ElasticClient({
       host: this.computeHostString(optionsArg),
-      log: "trace"
+      log: 'trace'
     });
   }
 
@@ -60,12 +61,12 @@ export class ElasticLog<T> {
     }
     this.client.index(
       {
-        index: `logs-${now.getFullYear()}.${("0" + (now.getMonth() + 1)).slice(
+        index: `logs-${now.getFullYear()}.${('0' + (now.getMonth() + 1)).slice(
           -2
         )}.${now.getDate()}`,
-        type: "log",
+        type: 'log',
         body: {
-          "@timestamp": now.toISOString(),
+          '@timestamp': now.toISOString(),
           zone: this.logContext.zone,
           container: this.logContext.containerName,
           environment: this.logContext.environment,
@@ -75,7 +76,7 @@ export class ElasticLog<T> {
       },
       (error, response) => {
         if (error) {
-          console.log("ElasticLog encountered an error:");
+          console.log('ElasticLog encountered an error:');
           console.log(error);
           this.logScheduler.addFailedLog(logObject);
         } else {

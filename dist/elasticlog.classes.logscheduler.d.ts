@@ -1,4 +1,4 @@
-import { ElasticLog, IStandardLogParams } from "./elasticlog.classes.elasticlog";
+import { ElasticLog, IStandardLogParams } from './elasticlog.classes.elasticlog';
 export declare class LogScheduler {
     elasticLogRef: ElasticLog<any>;
     logsScheduled: boolean;

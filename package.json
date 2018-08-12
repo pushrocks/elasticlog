@@ -1,28 +1,28 @@
 {
   "name": "elasticlog",
   "version": "1.0.7",
+  "private": false,
   "description": "log to elasticsearch in a kibana compatible format",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
-    "test": "(npmts)",
-    "format": "(gitzone format)"
+    "test": "(tstest test/)",
+    "format": "(gitzone format)",
+    "build": "echo \"Not needed for now\""
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^2.1.0",
-    "qenv": "^1.1.7",
-    "tapbundle": "^1.0.13"
+    "@gitzone/tsbuild": "^2.0.22",
+    "@gitzone/tsrun": "^1.1.12",
+    "@gitzone/tstest": "^1.0.13",
+    "@pushrocks/tapbundle": "^3.0.5",
+    "qenv": "^1.1.7"
   },
   "dependencies": {
-    "@types/elasticsearch": "^5.0.19",
-    "elasticsearch": "^14.0.0",
-    "smartdelay": "^1.0.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "@pushrocks/smartdelay": "^2.0.2",
+    "@pushrocks/smartlog-interfaces": "^1.0.9",
+    "@types/elasticsearch": "^5.0.25",
+    "elasticsearch": "^15.1.1"
   }
 }

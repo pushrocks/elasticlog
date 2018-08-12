@@ -1,7 +1,4 @@
-import {
-  ElasticLog,
-  IStandardLogParams
-} from "./elasticlog.classes.elasticlog";
+import { ElasticLog, IStandardLogParams } from './elasticlog.classes.elasticlog';
 
 export class LogScheduler {
   elasticLogRef: ElasticLog<any>;
@@ -28,10 +25,10 @@ export class LogScheduler {
         this.elasticLogRef.log(logObject, true);
       }
       if (this.logStorage.length === 0) {
-        console.log("ElasticLog retry success!!!");
+        console.log('ElasticLog retry success!!!');
         this.logsScheduled = false;
       } else {
-        console.log("ElasticLog retry failed");
+        console.log('ElasticLog retry failed');
         this.setRetry();
       }
     }, 5000);
@@ -39,7 +36,7 @@ export class LogScheduler {
 
   deferSend() {
     if (!this.logsScheduled) {
-      console.log("Retry ElasticLog in 5 seconds!");
+      console.log('Retry ElasticLog in 5 seconds!');
       this.logsScheduled = true;
       this.setRetry();
     }

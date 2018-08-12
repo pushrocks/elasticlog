@@ -1,12 +1,6 @@
-export declare type Environment = "local" | "test" | "staging" | "production";
-import { Client as ElasticClient } from "elasticsearch";
-import { LogScheduler } from "./elasticlog.classes.logscheduler";
-export interface LogContext {
-    zone?: string;
-    containerName?: string;
-    environment: Environment;
-}
-export declare type TLogSeverity = "log" | "info" | "warn" | "error" | "fatal";
+import { Client as ElasticClient } from 'elasticsearch';
+import { ILogContext } from 'smartlog-interfaces';
+import { LogScheduler } from './elasticlog.classes.logscheduler';
 export interface IStandardLogParams {
     message: string;
     severity: string;
@@ -17,11 +11,11 @@ export interface IElasticLogConstructorOptions {
     ssl: boolean;
     user?: string;
     pass?: string;
-    logContext: LogContext;
+    logContext: ILogContext;
 }
 export declare class ElasticLog<T> {
     client: ElasticClient;
-    logContext: LogContext;
+    logContext: ILogContext;
     logScheduler: LogScheduler;
     /**
      * sets up an instance of Elastic log

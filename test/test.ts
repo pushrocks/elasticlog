@@ -1,10 +1,10 @@
-import { expect, tap } from 'tapbundle'
-import { Qenv } from 'qenv'
-import * as elasticlog from '../ts/index'
+import { expect, tap } from '@pushrocks/tapbundle';
+import { Qenv } from 'qenv';
+import * as elasticlog from '../ts/index';
 
-const testQenv = new Qenv('./', './.nogit/')
+const testQenv = new Qenv('./', './.nogit/');
 
-let testElasticLog: elasticlog.ElasticLog<any>
+let testElasticLog: elasticlog.ElasticLog<any>;
 
 tap.test('first test', async () => {
   testElasticLog = new elasticlog.ElasticLog({
@@ -14,18 +14,20 @@ tap.test('first test', async () => {
     user: process.env.ELK_USER,
     pass: process.env.ELK_PASS,
     logContext: {
+      company: 'Lossless GmbH',
+      runtime: 'node',
       containerName: 'testContainer',
       environment: 'test'
     }
-  })
-  expect(testElasticLog).to.be.instanceOf(elasticlog.ElasticLog)
-})
+  });
+  expect(testElasticLog).to.be.instanceOf(elasticlog.ElasticLog);
+});
 
 tap.test('should send a message to Elasticsearch', async () => {
   testElasticLog.log({
     severity: 'log',
     message: 'hi, this is a testMessage'
-  })
-})
+  });
+});
 
-tap.start()
+tap.start();
