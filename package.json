@@ -1,5 +1,5 @@
 {
-  "name": "elasticlog",
+  "name": "@pushrocks/elasticlog",
   "version": "1.0.8",
   "private": false,
   "description": "log to elasticsearch in a kibana compatible format",
