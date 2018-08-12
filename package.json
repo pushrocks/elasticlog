@@ -1,6 +1,6 @@
 {
   "name": "@pushrocks/elasticlog",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "private": false,
   "description": "log to elasticsearch in a kibana compatible format",
   "main": "dist/index.js",
