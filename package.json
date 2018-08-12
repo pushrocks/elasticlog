@@ -1,6 +1,6 @@
 {
   "name": "elasticlog",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "description": "log to elasticsearch in a kibana compatible format",
   "main": "dist/index.js",
