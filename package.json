@@ -15,14 +15,14 @@
   "devDependencies": {
     "@gitzone/tsbuild": "^2.0.22",
     "@gitzone/tsrun": "^1.1.12",
-    "@gitzone/tstest": "^1.0.13",
-    "@pushrocks/tapbundle": "^3.0.5",
-    "qenv": "^1.1.7"
+    "@gitzone/tstest": "^1.0.15",
+    "@pushrocks/qenv": "^2.0.2",
+    "@pushrocks/tapbundle": "^3.0.7"
   },
   "dependencies": {
     "@pushrocks/smartdelay": "^2.0.2",
     "@pushrocks/smartlog-interfaces": "^1.0.9",
-    "@types/elasticsearch": "^5.0.25",
+    "@types/elasticsearch": "^5.0.26",
     "elasticsearch": "^15.1.1"
   }
 }

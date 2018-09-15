@@ -1,5 +1,6 @@
 {
   "npmci": {
-    "npmGlobalTools": []
+    "npmGlobalTools": [],
+    "npmAccessLevel": "public"
   }
 }
