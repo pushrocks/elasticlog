@@ -1,4 +1,4 @@
 import * as elasticsearch from 'elasticsearch';
-import * as smartdelay from 'smartdelay';
-import * as smartlogInterfaces from 'smartlog-interfaces';
+import * as smartdelay from '@pushrocks/smartdelay';
+import * as smartlogInterfaces from '@pushrocks/smartlog-interfaces';
 export { elasticsearch, smartdelay, smartlogInterfaces };

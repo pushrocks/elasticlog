@@ -1,5 +1,5 @@
 import { expect, tap } from '@pushrocks/tapbundle';
-import { Qenv } from 'qenv';
+import { Qenv } from '@pushrocks/qenv';
 import * as elasticlog from '../ts/index';
 
 const testQenv = new Qenv('./', './.nogit/');
@@ -23,7 +23,7 @@ tap.test('first test', async () => {
   expect(testElasticLog).to.be.instanceOf(elasticlog.ElasticLog);
 });
 
-tap.skip.test('should send a message to Elasticsearch', async () => {
+tap.test('should send a message to Elasticsearch', async () => {
   testElasticLog.log({
     severity: 'log',
     message: 'hi, this is a testMessage'
