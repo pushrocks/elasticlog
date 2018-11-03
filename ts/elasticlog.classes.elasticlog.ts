@@ -1,6 +1,6 @@
 // interfaces
 import { Client as ElasticClient } from 'elasticsearch';
-import { ILogContext } from '@pushrocks/smartlog-interfaces';
+import { ILogContext, ILogPackage } from '@pushrocks/smartlog-interfaces';
 
 // other classes
 import { LogScheduler } from './elasticlog.classes.logscheduler';
@@ -16,12 +16,10 @@ export interface IElasticLogConstructorOptions {
   ssl: boolean;
   user?: string;
   pass?: string;
-  logContext: ILogContext;
 }
 
 export class ElasticLog<T> {
   client: ElasticClient;
-  logContext: ILogContext;
   logScheduler = new LogScheduler(this);
 
   /**
@@ -29,7 +27,6 @@ export class ElasticLog<T> {
    * @param optionsArg
    */
   constructor(optionsArg: IElasticLogConstructorOptions) {
-    this.logContext = optionsArg.logContext;
     this.client = new ElasticClient({
       host: this.computeHostString(optionsArg),
       log: 'trace'
@@ -53,10 +50,10 @@ export class ElasticLog<T> {
     return hostString;
   }
 
-  async log(logObject: IStandardLogParams, scheduleOverwrite = false) {
+  public async log(logPackageArg: ILogPackage, scheduleOverwrite = false) {
     const now = new Date();
     if (this.logScheduler.logsScheduled && !scheduleOverwrite) {
-      this.logScheduler.scheduleLog(logObject);
+      this.logScheduler.scheduleLog(logPackageArg);
       return;
     }
     this.client.index(
@@ -67,20 +64,20 @@ export class ElasticLog<T> {
         type: 'log',
         body: {
           '@timestamp': now.toISOString(),
-          zone: this.logContext.zone,
-          container: this.logContext.containerName,
-          environment: this.logContext.environment,
-          severity: logObject.severity,
-          message: logObject.message
+          zone: logPackageArg.context.zone,
+          container: logPackageArg.context.containerName,
+          environment: logPackageArg.context.environment,
+          severity: logPackageArg.level,
+          message: logPackageArg.message
         }
       },
       (error, response) => {
         if (error) {
           console.log('ElasticLog encountered an error:');
           console.log(error);
-          this.logScheduler.addFailedLog(logObject);
+          this.logScheduler.addFailedLog(logPackageArg);
         } else {
-          console.log(`ElasticLog: ${logObject.message}`);
+          console.log(`ElasticLog: ${logPackageArg.message}`);
         }
       }
     );

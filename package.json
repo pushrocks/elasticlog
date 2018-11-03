@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@pushrocks/smartdelay": "^2.0.2",
-    "@pushrocks/smartlog-interfaces": "^1.0.15",
+    "@pushrocks/smartlog-interfaces": "^2.0.0",
     "@types/elasticsearch": "^5.0.28",
     "elasticsearch": "^15.2.0"
   }

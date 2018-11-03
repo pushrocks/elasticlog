@@ -12,20 +12,23 @@ tap.test('first test', async () => {
     port: parseInt(process.env.ELK_PORT, 10),
     ssl: true,
     user: process.env.ELK_USER,
-    pass: process.env.ELK_PASS,
-    logContext: {
-      company: 'Lossless GmbH',
-      runtime: 'node',
-      containerName: 'testContainer',
-      environment: 'test'
-    }
+    pass: process.env.ELK_PASS
   });
   expect(testElasticLog).to.be.instanceOf(elasticlog.ElasticLog);
 });
 
 tap.test('should send a message to Elasticsearch', async () => {
   testElasticLog.log({
-    severity: 'log',
+    type: 'increment',
+    level: 'info',
+    context: {
+      company: 'Lossless GmbH',
+      companyunit: 'lossless.cloud',
+      containerName: 'testcontainer',
+      environment: 'test',
+      runtime: 'node',
+      zone: 'ship.zone',
+    },
     message: 'hi, this is a testMessage'
   });
 });
